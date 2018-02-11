@@ -1,0 +1,5 @@
+#!/bin/bash
+# This is a hello world program
+echo 'hello, world'
+
+ls --all --directory ~/
