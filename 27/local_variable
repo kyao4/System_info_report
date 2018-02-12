@@ -1,0 +1,19 @@
+#!/bin/bash
+# local variable demo
+foo=0	#global variable
+function foo1 {
+	local foo1=1
+	echo "func1 = $foo1"
+}
+
+function foo2 {
+	local foo2=2
+	echo "func2 = $foo2"
+}
+
+echo "global = $foo"
+foo1
+echo "global = $foo"
+foo2
+echo "global = $foo"
+

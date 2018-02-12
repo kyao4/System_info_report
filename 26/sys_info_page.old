@@ -1,0 +1,18 @@
+#!/bin/bash
+# Program to output a system information page
+
+TITLE="System Information Report $HOSTNAME" #constant HOSTNAME 系统变量
+CURRENT_TIME=$(date +"%x %r %Z") #what's this?
+TIME_STAMP="GENERATED, $CURRENT_TIME, by $USER" #USER 系统变量
+
+
+
+echo "<html>
+	<head>
+		<title> $title </title>
+	</head>
+	<body>
+		<h1> $title </h1>
+		<p> $TIME_STAMP </p>
+	</body>
+</html>"

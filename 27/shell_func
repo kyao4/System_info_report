@@ -1,0 +1,16 @@
+#!/bin/bash
+# shell function demo
+
+function step2 {
+	echo "step 2"
+	return
+}
+
+step3 () {
+	echo "step 3"
+	return
+}
+
+echo "step 1"
+step2
+step3
