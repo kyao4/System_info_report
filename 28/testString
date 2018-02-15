@@ -1,0 +1,17 @@
+#!/bin/bash
+
+ANSWER="Maybe"
+
+if [ -z "$ANSWER" ]; then
+	echo "There is no anwser"
+fi
+
+if [ "$ANSWER" == "Yes" ]; then #Don't forget whitespace between the expression and square brackets
+	echo "The anwser is $ANSWER"
+elif [ "$ANSWER" == "No" ]; then
+	echo "The anwser is $ANSWER"
+elif [ "$ANSWER" == "Maybe" ]; then
+	echo "The anwser is $ANSWER"
+else
+	echo "The anwser is unknown"
+fi

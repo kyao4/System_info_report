@@ -1,0 +1,28 @@
+#!/bin/bash
+
+FILE=~/.bashrc
+if [ -e "$FILE" ]; then
+	if [ -f "$FILE" ]; then 
+		echo "This is a regular file."
+	fi
+	
+	if [ -d "$FILE" ]; then
+		echo "This is a directory."
+	fi
+
+	if [ -r "$FILE" ]; then
+		echo "This file is readable"
+	fi
+
+	if [ -w "$FILE" ]; then
+		echo "This file is writable"
+	fi
+
+	if [ -x "$FILE" ]; then
+		echo "This file is executable."
+	fi
+else 
+	echo "file doesn't exist"
+	exit 1
+fi
+exit

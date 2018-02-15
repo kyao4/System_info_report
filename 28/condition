@@ -1,0 +1,15 @@
+#!/bin/bash
+x=6
+if [ $x = 5 ]; then
+	echo "X equal 5"
+else
+	echo "X does not equal 5"
+fi
+
+echo "a variable that represent the status of a program when this program exit ${?}"
+
+#test is an built-in command, there is another popular form:
+
+#[ expresion ]
+
+
