@@ -1,0 +1,21 @@
+#!/bin/bash
+# test combination of the condition: determine if an integer is within a range
+
+MAX_VALUE=100
+MIN_VALUE=1
+INT=66
+
+if [[ INT -lt MAX_VALUE && INT -gt MIN_VALUE ]]; then
+	echo "INT is between $MAX_VALUE and $MIN_VALUE"
+else
+	echo "INT is out of scope"
+fi
+
+
+
+if [ ! \( $INT -lt $MAX_VALUE -a $INT -gt $MIN_VALUE \) ]; then
+	echo "INT is out of scope"
+else
+	echo "INT is between $MAX_VALUE and $MIN_VALUE"
+fi
+

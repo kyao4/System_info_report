@@ -1,0 +1,73 @@
+#!/bin/bash
+# Program to output a system information page
+
+TITLE="System Information Report $HOSTNAME" #constant HOSTNAME 系统变量
+CURRENT_TIME=$(date +"%x %r %Z") #what's this?
+TIME_STAMP="GENERATED, $CURRENT_TIME, by $USER" #USER 系统变量
+
+#Here document 一种新的IO重定向方式, 可以将文本重定向到命令的标准输入中
+
+function report_uptime {
+	cat <<- _EOF_
+	<h2> System uptime </h2>
+	<pre> $(uptime) </pre>
+	_EOF_
+	return
+}
+
+function report_disk_space {
+	cat <<- _EOF_
+	<h2> Disk Space Utilization </h2>
+	<pre> $(df -h) </pre>
+	_EOF_
+	return
+}
+
+function report_home_space {
+	cat <<- _EOF_
+	<h2> Home Space Utilization </h2>
+	<pre> $(du -sh /home/${USER}/*) </pre>	
+	_EOF_
+	return
+}
+
+
+function report_home_space_all_user {
+	cat <<- _EOF_
+	<h2> Home Space Utilization </h2>
+	<pre> $(du -sh /home/*) </pre>	
+	_EOF_
+	return
+}
+
+if [[ $(id -u) != 0 ]]; then # get effective user id, 0 for super user, other value for ordinary user
+cat << _EOF_
+<html>
+	<head>
+		<title> $TITLE </title>
+	</head>
+	<body>
+		<h1> $TITLE </h1>
+		<p> $TIME_STAMP </p>
+		$(report_uptime)
+		$(report_disk_space)
+		$(report_home_space)
+	</body>
+</html>
+_EOF_
+else 
+cat << _EOF_
+<html>
+	<head>
+		<title> $TITLE </title>
+	</head>
+	<body>
+		<h1> $TITLE </h1>
+		<p> $TIME_STAMP </p>
+		$(report_uptime)
+		$(report_disk_space)
+		$(report_home_space_all_user)
+	</body>
+</html>
+_EOF_
+fi

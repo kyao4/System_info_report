@@ -3,7 +3,7 @@
 ANSWER="Maybe"
 
 if [ -z "$ANSWER" ]; then
-	echo "There is no anwser"
+	echo "There is no anwser" >&2
 fi
 
 if [ "$ANSWER" == "Yes" ]; then #Don't forget whitespace between the expression and square brackets
@@ -15,3 +15,5 @@ elif [ "$ANSWER" == "Maybe" ]; then
 else
 	echo "The anwser is unknown"
 fi
+
+

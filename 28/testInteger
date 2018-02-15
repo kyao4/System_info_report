@@ -1,0 +1,59 @@
+#!/bin/bash
+
+INT=100
+
+if [ -z $INT ]; then
+	echo "This is an empty variable" >&2
+fi
+
+if [ $INT -eq 0 ]; then
+	echo "INT is zero"
+else
+	if [ $INT -lt 0 ]; then
+		echo "INT is negative"
+	fi
+	if [ $INT -gt 0 ]; then
+		echo "INT is positive"
+	fi
+
+	if [ $((INT % 2)) == 0 ]; then #Integer expansion
+		echo "INT is even"
+	else
+		echo "INT is odd"
+	fi
+fi
+
+# modern version of test command -> [[ expression ]], this command support regular expression
+# [[ string =~ regex ]]
+# support pattern matching. 
+# [[ $FILE = foo.* ]]
+
+# In addtion to [[ expression ]], (( expression )) support integer test, if the result of test is 0, it is true else false.
+# The advantage of integer test is that you can use <, > etc in the expression.
+
+
+if [[ $INT =~ ^-?[0-9]+$ ]]; then
+	if (( INT == 0 )); then
+		echo "INT is zero"
+	fi
+	if (( INT < 0 )) ; then
+		echo "INT is negative"
+	fi
+	if (( INT > 0 )); then
+		echo "INT is positive"
+	fi
+	
+	if (( (INT % 2) == 0 )); then #Integer expansion
+		echo "INT is even"
+	else
+		echo "INT is odd"
+	fi
+else 
+	echo "This is an empty variable" >&2
+	exit 2
+fi
+
+# Because [[  ]] is part of shell's syntax rather than an ordinary command, it is able to recognize variable with out expansion.
+
+
+
